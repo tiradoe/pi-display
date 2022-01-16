@@ -12,16 +12,29 @@
     background-repeat: no-repeat;
 }
 
+#client-box {
+    padding: 2em;
+}
+
 #clock {
     padding-bottom: 3em;
 }
 
+#group-box {
+    background-color: #386bb7;
+    border-radius: 1em;
+}
+
+#group-header {
+    color: black;
+    background-color: #fff;
+    padding: 1em;
+    border-radius: 1em 1em 0 0 ;
+}
+
 #snapcontrol-grid {
     color: #fff;
-    background-color: #3b5399;
+    background-color: #b3bcf2;
     padding: 5em;
 }
 
-#menu {
-    min-height: 2em;
-}

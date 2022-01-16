@@ -6,20 +6,19 @@ from datetime import datetime
 from widgets.clock import ClockLabel
 from widgets.calendar import CalendarBox
 
-class DefaultView():
+class DefaultView(Gtk.Grid):
     def __init__(self):
         self.row_name = "Default"
         self.generate_view()
 
     def generate_view(self):
         display = Gtk.Grid()
-        display.set_column_homogeneous(False)
 
         date_box = self.date_box()
         picture_box = self.picture_box()
 
         display.add(date_box)
-        display.attach_next_to(picture_box, date_box, Gtk.PositionType.RIGHT,2,1)
+        display.attach_next_to(picture_box, date_box, Gtk.PositionType.RIGHT,3,1)
 
         return display
 

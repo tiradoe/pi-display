@@ -15,6 +15,7 @@ class AppWindow(Gtk.Window):
         main_box = Gtk.Box(
                 orientation=Gtk.Orientation.VERTICAL,
                 )
+        main_box.set_name('main-box')
 
         default_view = DefaultView()
         snapcontrol_view = SnapControlView()
@@ -28,7 +29,7 @@ class AppWindow(Gtk.Window):
         switcher.set_stack(content_window)
 
         main_box.pack_start(content_window, True, True, 0)
-        main_box.pack_end(switcher, False, True, 0)
+        main_box.pack_end(switcher, False, False, 0)
 
         self.load_css()
         self.add(main_box)
