@@ -1,0 +1,4 @@
+snapcast
+pycairo
+PyGObject
+python-dotenv

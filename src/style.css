@@ -1,0 +1,27 @@
+#date-box {
+    background-color: #514fe8;
+    padding-top: 3em;
+    font-size: 2em;
+    color: #fff;
+}
+
+#picture-box{
+    /*background-color: #4fd6e8;*/
+    background-image: url("assets/default_bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#clock {
+    padding-bottom: 3em;
+}
+
+#snapcontrol-grid {
+    color: #fff;
+    background-color: #3b5399;
+    padding: 5em;
+}
+
+#menu {
+    min-height: 2em;
+}
