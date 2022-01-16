@@ -10,7 +10,8 @@ from views.snapcontrol import SnapControlView
 class AppWindow(Gtk.Window):
     def __init__(self):
         super().__init__(title="RPi Display")
-        self.set_size_request(800,480)
+        #self.set_size_request(800,480)
+        self.fullscreen()
 
         main_box = Gtk.Box(
                 orientation=Gtk.Orientation.VERTICAL,
