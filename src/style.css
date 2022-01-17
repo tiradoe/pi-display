@@ -16,6 +16,10 @@
     padding: 1em;
 }
 
+#clients-label {
+    padding-left: 1em;
+}
+
 #clock {
     padding-bottom: 3em;
 }
@@ -37,14 +41,13 @@
 }
 
 .separator {
-    padding: 2px;
+    padding: 1px;
     margin-bottom: 1em;
 }
 
 #snapcontrol-grid {
     color: #fff;
     background-color: #b3bcf2;
-    padding: 2em;
 }
 
 #source-container {
