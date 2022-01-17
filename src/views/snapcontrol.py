@@ -14,15 +14,14 @@ class SnapControlView(Gtk.FlowBox):
         self.server = self.loop.run_until_complete(
                 snapcast.control.create_server(
                     self.loop,
-                    self.config["SNAPCAST_IP"],
-                    self.config["SNAPCAST_CONTROL_PORT"])
+                    self.config["SNAPCAST_SERVER_IP"],
+                    self.config["SNAPCAST_TCP_PORT"])
                 )
 
     def generate_view(self):
         display = Gtk.FlowBox()
 
         display.set_valign(Gtk.Align.START)
-        display.set_max_children_per_line(3)
         display.set_selection_mode(Gtk.SelectionMode.NONE)
         display.set_name("snapcontrol-grid")
 
@@ -65,7 +64,14 @@ class SnapControlView(Gtk.FlowBox):
 
             source_dropdown = Gtk.ComboBox.new_with_model_and_entry(stream_store)
             source_dropdown.set_entry_text_column(1)
-            source_dropdown.set_active(streams.index(group.stream))
+
+            # If the stream isn't found, just use the first one
+            # This can because by changing the stream name on the server
+            try:
+                source_dropdown.set_active(streams.index(group.stream))
+            except:
+                source_dropdown.set_active(0)
+
             source_dropdown.connect("changed", self.on_stream_changed)
 
             source_dropdown_context = source_dropdown.get_style_context()
