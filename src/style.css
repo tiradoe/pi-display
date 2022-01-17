@@ -12,12 +12,16 @@
     background-repeat: no-repeat;
 }
 
-#client-box {
+.client-container {
     padding: 2em;
 }
 
 #clock {
     padding-bottom: 3em;
+}
+
+.dropdown {
+    padding-top: 1em;
 }
 
 #group-box {
@@ -32,9 +36,17 @@
     border-radius: 1em 1em 0 0 ;
 }
 
+.separator {
+    padding: 2px;
+    margin-bottom: 1em;
+}
+
 #snapcontrol-grid {
     color: #fff;
     background-color: #b3bcf2;
     padding: 2em;
 }
 
+#source-container {
+    padding: 2em;
+}

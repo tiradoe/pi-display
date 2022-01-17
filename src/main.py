@@ -6,12 +6,17 @@ from gi.repository import Gtk, Gdk
 
 from views.default import DefaultView
 from views.snapcontrol import SnapControlView
+from dotenv import dotenv_values
 
 class AppWindow(Gtk.Window):
     def __init__(self):
         super().__init__(title="RPi Display")
-        #self.set_size_request(800,480)
-        self.fullscreen()
+        self.config = dotenv_values(".env")
+
+        if "ENVIRONMENT" in self.config and self.config["ENVIRONMENT"] == "dev":
+            self.set_size_request(800,480)
+        else:
+            self.fullscreen()
 
         main_box = Gtk.Box(
                 orientation=Gtk.Orientation.VERTICAL,
