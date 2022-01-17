@@ -26,13 +26,12 @@ class SnapControlView(Gtk.FlowBox):
         display.set_selection_mode(Gtk.SelectionMode.NONE)
         display.set_name("snapcontrol-grid")
 
-        display.set_valign(True)
-        display.set_vexpand(True)
-        display.set_hexpand(True)
-
         self.get_group_list(display)
 
-        return display
+        scrolled_window = Gtk.ScrolledWindow()
+        scrolled_window.add(display)
+
+        return scrolled_window
 
 
     def get_group_list(self, flowbox):
