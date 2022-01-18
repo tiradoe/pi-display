@@ -18,4 +18,4 @@ A display designed for the official Raspberry Pi 7" touchscreen (should work on 
 2. Install dependencies: `pip install -r requirements.txt`
 3. Rename `src/.env.example` to `src/.env` and update variables
     - Setting `ENVIRONMENT=dev` prevents the screen from opening maximized
-4. Start the application with `python src/main.py`
+4. Enter the src directory and use `python main.py` to start the application
