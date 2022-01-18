@@ -4,6 +4,8 @@ A display designed for the official Raspberry Pi 7" touchscreen (should work on 
 
 ![Pi Display](https://i.imgur.com/D5hvAvE.gif)
 
+[See it in action!](https://i.imgur.com/D5hvAvE.mp4)
+
 ## Requirements
 - [Gtk 3](https://www.gtk.org)
 - [Python 3](https://www.python.org/)
