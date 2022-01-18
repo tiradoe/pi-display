@@ -6,9 +6,7 @@ A display designed for the official Raspberry Pi 7" touchscreen (should work on 
 
 ## Requirements
 [Gtk 3](https://www.gtk.org)
-
 [Python 3](https://www.python.org/)
-
 [PyGObject dependencies](https://pygobject.readthedocs.io/en/latest/getting_started.html)
 
 ## Setup
