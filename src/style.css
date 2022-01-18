@@ -16,16 +16,12 @@
     padding: 1em;
 }
 
-#clients-label {
-    padding-left: 1em;
+.client-box {
+    padding-bottom: 1em;
 }
 
 #clock {
     padding-bottom: 3em;
-}
-
-.dropdown {
-    padding-top: 1em;
 }
 
 #group-box {
@@ -37,19 +33,26 @@
     color: black;
     background-color: #fff;
     padding: 1em;
+    padding-bottom: 1em;
     border-radius: 1em 1em 0 0 ;
+    font-weight: bold;
 }
 
 .separator {
     padding: 1px;
-    margin-bottom: 1em;
 }
 
 #snapcontrol-grid {
     color: #fff;
     background-color: #b3bcf2;
+    padding: 0.5em 1em;
 }
 
 #source-container {
     padding: 1em;
+}
+
+.title {
+    padding-bottom: 1em;
+    font-weight: bold;
 }
