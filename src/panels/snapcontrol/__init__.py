@@ -3,11 +3,12 @@ import asyncio
 import snapcast.control
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
+from gi.repository import Gtk, GLib
 from dotenv import dotenv_values
 
-class SnapControlView(Gtk.FlowBox):
+class SnapControlView(Gtk.ScrolledWindow):
     def __init__(self):
+        Gtk.ScrolledWindow.__init__(self, Gtk.Adjustment(0,0,0,0,0,0))
         self.row_name = "Snapcontrol"
         self.loop = asyncio.get_event_loop()
         self.config = dotenv_values(".env")
@@ -17,19 +18,24 @@ class SnapControlView(Gtk.FlowBox):
                     self.config["SNAPCAST_SERVER_IP"],
                     self.config["SNAPCAST_TCP_PORT"])
                 )
+        self.groups = Gtk.FlowBox()
+        self.generate_view()
+        GLib.timeout_add_seconds(1, self.update_groups)
 
     def generate_view(self):
-        display= Gtk.ScrolledWindow()
-        groups_flowbox = Gtk.FlowBox()
+        self.groups.set_valign(Gtk.Align.START)
+        self.groups.set_selection_mode(Gtk.SelectionMode.NONE)
+        self.groups.set_name("snapcontrol-grid")
 
-        groups_flowbox.set_valign(Gtk.Align.START)
-        groups_flowbox.set_selection_mode(Gtk.SelectionMode.NONE)
-        groups_flowbox.set_name("snapcontrol-grid")
+        self.update_group_list()
+        self.add(self.groups)
 
-        self.update_group_list(groups_flowbox)
-        display.add(groups_flowbox)
-
-        return display
+    def update_groups(self):
+        for group in self.groups:
+            wtf = group.get_children()
+            for child in wtf:
+                print(child)
+            return GLib.SOURCE_CONTINUE
 
 
     def get_clients_box(self, group):
@@ -138,7 +144,7 @@ class SnapControlView(Gtk.FlowBox):
             )
 
 
-    def update_group_list(self, flowbox):
+    def update_group_list(self):
         for group in self.server.groups:
             group_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
             group_box.set_name("group-box")
@@ -174,4 +180,4 @@ class SnapControlView(Gtk.FlowBox):
             clients = self.get_clients_box(group)
             group_box.pack_start(clients, False, False, 1)
 
-            flowbox.add(group_box)
+            self.groups.add(group_box)
