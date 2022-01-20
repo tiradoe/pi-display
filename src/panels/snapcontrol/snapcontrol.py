@@ -20,7 +20,6 @@ class SnapControlView(Gtk.ScrolledWindow):
                 )
         self.groups = Gtk.FlowBox()
         self.generate_view()
-        GLib.timeout_add_seconds(1, self.update_groups)
 
     def generate_view(self):
         self.groups.set_valign(Gtk.Align.START)
@@ -29,13 +28,6 @@ class SnapControlView(Gtk.ScrolledWindow):
 
         self.update_group_list()
         self.add(self.groups)
-
-    def update_groups(self):
-        for group in self.groups:
-            wtf = group.get_children()
-            for child in wtf:
-                print(child)
-            return GLib.SOURCE_CONTINUE
 
 
     def get_clients_box(self, group):
