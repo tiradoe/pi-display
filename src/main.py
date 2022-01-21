@@ -4,8 +4,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 
-from panels.home import HomeView
-from panels.snapcontrol import SnapControlView
+from apps.home import HomeView
+from apps.snapcontrol import SnapControlView
 from dotenv import dotenv_values
 
 class AppWindow(Gtk.Window):
