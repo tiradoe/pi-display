@@ -24,12 +24,12 @@
     padding-bottom: 3em;
 }
 
-#group-box {
+.group-box {
     background-color: #386bb7;
     border-radius: 1em;
 }
 
-#group-header {
+.group-header {
     color: black;
     background-color: #fff;
     padding: 1em;
@@ -48,7 +48,7 @@
     padding: 0.5em 1em;
 }
 
-#source-container {
+.source-container {
     padding: 1em;
 }
 
