@@ -2,13 +2,12 @@ import gi
 gi.require_version("Gtk", "3.0")
 
 from gi.repository import Gtk
-from datetime import datetime
-from widgets.clock import ClockLabel
-from widgets.calendar import CalendarBox
+from .widgets.clock import ClockLabel
+from .widgets.calendar import CalendarBox
 
-class DefaultView(Gtk.Grid):
+class HomeView(Gtk.Grid):
     def __init__(self):
-        self.row_name = "Default"
+        self.row_name = "Home"
         self.generate_view()
 
     def generate_view(self):

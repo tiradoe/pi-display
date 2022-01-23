@@ -4,8 +4,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gdk
 
-from views.default import DefaultView
-from views.snapcontrol import SnapControlView
+from apps.home import HomeView
+from apps.snapcontrol import SnapControlView
 from dotenv import dotenv_values
 
 class AppWindow(Gtk.Window):
@@ -23,12 +23,12 @@ class AppWindow(Gtk.Window):
                 )
         main_box.set_name('main-box')
 
-        default_view = DefaultView()
+        home_view = HomeView()
         snapcontrol_view = SnapControlView()
 
         content_window = self.content_window()
-        content_window.add_titled(default_view.generate_view(), "default_view", "Home")
-        content_window.add_titled(snapcontrol_view.generate_view(), "snapcontrol_view", "Snapcast")
+        content_window.add_titled(home_view.generate_view(), "home_view", "Home")
+        content_window.add_titled(snapcontrol_view, "snapcontrol_view", "Snapcast")
 
         switcher = Gtk.StackSwitcher(can_focus=False)
         switcher.set_name("menu")
