@@ -26,10 +26,9 @@ class SnapControlView(Gtk.ScrolledWindow):
                     self.config["SNAPCAST_TCP_PORT"])
                 )
         self.groups = Gtk.FlowBox()
+
         self.generate_view()
         self.connect("stream_changed", self.on_stream_changed)
-        #for group in self.groups:
-        #    print(group.get_child().title)
 
     def generate_view(self):
         self.groups.set_valign(Gtk.Align.START)
@@ -50,6 +49,7 @@ class SnapControlView(Gtk.ScrolledWindow):
                 })
             )
 
+
     def on_mute_toggle(self, switch, gparam, player):
         if(player["type"] == 'group'):
             self.loop.run_until_complete(
@@ -62,6 +62,7 @@ class SnapControlView(Gtk.ScrolledWindow):
                     'muted': not switch.get_state()
                     }
                 ))
+
 
     def on_stream_changed(self, view, combo):
         tree_iter = combo.get_active_iter()

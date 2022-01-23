@@ -40,6 +40,7 @@ class AppWindow(Gtk.Window):
         self.load_css()
         self.add(main_box)
 
+
     def content_window(self):
         content_box = Gtk.Stack()
 
@@ -47,6 +48,7 @@ class AppWindow(Gtk.Window):
         content_box.set_transition_duration(500)
 
         return content_box
+
 
     def load_css(self):
         css_provider = Gtk.CssProvider()
