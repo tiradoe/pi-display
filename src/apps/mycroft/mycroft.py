@@ -84,5 +84,5 @@ class MycroftTextResponse(Gtk.Box):
         Gtk.Box.__init__(self)
         self.utterance_label = Gtk.Label(message.data["utterance"])
         self.utterance_label.set_line_wrap(True)
-        self.pack_start(self.utterance_label, True, True, 1)
+        self.pack_start(self.utterance_label, False, False, 1)
 
