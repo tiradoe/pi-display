@@ -1,4 +1,6 @@
 import gi
+import faulthandler
+faulthandler.enable()
 gi.require_version("Gtk", "3.0")
 
 from gi.repository import Gtk
@@ -6,15 +8,15 @@ from mycroft_bus_client import MessageBusClient
 from time import sleep
 
 
-class MycroftView(Gtk.Box):
+class MycroftView(Gtk.ScrolledWindow):
     def __init__(self):
-        Gtk.Box.__init__(self)
-        self.set_name("mycroft-box")
+        Gtk.ScrolledWindow.__init__(self, Gtk.Adjustment(0,0,0,0,0,0))
         self.content_box = Gtk.Box()
+        self.content_box.set_name("mycroft-box")
         self.display_in_use = False
 
         self.build_default_view()
-        self.pack_start(self.content_box, True, True, 1)
+        self.add(self.content_box)
 
         self.client = MessageBusClient()
         self.client.run_in_thread()
@@ -84,5 +86,6 @@ class MycroftTextResponse(Gtk.Box):
         Gtk.Box.__init__(self)
         self.utterance_label = Gtk.Label(message.data["utterance"])
         self.utterance_label.set_line_wrap(True)
-        self.pack_start(self.utterance_label, False, False, 1)
+        self.utterance_label.set_max_width_chars(50)
+        self.pack_start(self.utterance_label, True, True, 1)
 
