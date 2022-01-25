@@ -25,6 +25,8 @@ class SnapControlView(Gtk.ScrolledWindow):
                     self.config["SNAPCAST_SERVER_IP"],
                     self.config["SNAPCAST_TCP_PORT"])
                 )
+        self.groups_container = Gtk.Box()
+        self.groups_container.set_name("groups-container")
         self.groups = Gtk.FlowBox()
 
         self.generate_view()
@@ -36,7 +38,8 @@ class SnapControlView(Gtk.ScrolledWindow):
         self.groups.set_name("snapcontrol-grid")
 
         self.update_group_list()
-        self.add(self.groups)
+        self.groups_container.pack_start(self.groups, True, True, 1)
+        self.add(self.groups_container)
 
 
     def set_volume(self, volume):

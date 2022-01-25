@@ -49,12 +49,6 @@
     padding: 1px;
 }
 
-#snapcontrol-grid {
-    color: #fff;
-    background-color: #b3bcf2;
-    padding: 0.5em 1em;
-}
-
 .source-container {
     padding: 1em;
 }
@@ -70,4 +64,13 @@
     font-weight: bold;
     font-size: 20pt;
     padding: 2em;
+}
+
+#groups-container {
+    background-color: #b3bcf2;
+    color: #fff;
+}
+
+#snapcontrol-grid {
+    padding: 1em;
 }
