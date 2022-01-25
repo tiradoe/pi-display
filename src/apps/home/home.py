@@ -7,21 +7,16 @@ from .widgets.calendar import CalendarBox
 
 class HomeView(Gtk.Grid):
     def __init__(self):
+        Gtk.Grid.__init__(self)
         self.row_name = "Home"
-        self.generate_view()
+        self.date_box = self.build_date_box()
+        self.picture_box = self.build_picture_box()
 
-    def generate_view(self):
-        display = Gtk.Grid()
+        self.add(self.date_box)
+        self.attach_next_to(self.picture_box, self.date_box, Gtk.PositionType.RIGHT,3,1)
 
-        date_box = self.date_box()
-        picture_box = self.picture_box()
 
-        display.add(date_box)
-        display.attach_next_to(picture_box, date_box, Gtk.PositionType.RIGHT,3,1)
-
-        return display
-
-    def date_box(self):
+    def build_date_box(self):
         date_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         date_box.set_name("date-box")
         date_box.set_hexpand(True)
@@ -32,7 +27,7 @@ class HomeView(Gtk.Grid):
 
         return date_box
 
-    def picture_box(self):
+    def build_picture_box(self):
         picture_box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL)
         picture_box.set_name("picture-box")
         picture_box.set_hexpand(True)

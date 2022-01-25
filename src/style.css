@@ -1,8 +1,14 @@
 #date-box {
     background-color: #514fe8;
-    padding-top: 3em;
+    padding-top: 2em;
     font-size: 2em;
     color: #fff;
+    font-weight: bold;
+    font-size: 2em;
+}
+
+#day-of-month-label {
+    font-size: 3em;
 }
 
 #picture-box{
@@ -21,7 +27,8 @@
 }
 
 #clock {
-    padding-bottom: 3em;
+    padding-bottom: 2em;
+    font-size: 1.5em;
 }
 
 .group-box {
@@ -55,4 +62,12 @@
 .title {
     padding-bottom: 1em;
     font-weight: bold;
+}
+
+#mycroft-box {
+    background-color: #0792ef;
+    color: white;
+    font-weight: bold;
+    font-size: 20pt;
+    padding: 2em;
 }
