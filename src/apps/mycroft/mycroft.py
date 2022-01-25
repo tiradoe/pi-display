@@ -34,12 +34,16 @@ class MycroftView(Gtk.Box):
 
         skills = {
             "QuestionsAnswersSkill": self.handle_questions_and_answers_skill,
+            "WeatherSkill": self.handle_questions_and_answers_skill,
             "JokingSkill": self.handle_joking_skill,
             "TimerSkill": self.handle_timer_skill,
         }
 
         if message.data["meta"]["skill"] in skills:
-            self.get_toplevel().content_window.set_visible_child_name("mycroft_view")
+            main_window = self.get_toplevel().content_window
+            if main_window.get_visible_child_name() != "mycroft_view":
+                main_window.set_visible_child_name("mycroft_view")
+
             run_skill = skills[message.data["meta"]["skill"]]
             run_skill(message)
             self.reset_view()
