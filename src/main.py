@@ -6,6 +6,7 @@ from gi.repository import Gtk, Gdk
 
 from apps.home import HomeView
 from apps.snapcontrol import SnapControlView
+from apps.mycroft import MycroftView
 from dotenv import dotenv_values
 
 class AppWindow(Gtk.Window):
@@ -23,25 +24,23 @@ class AppWindow(Gtk.Window):
                 )
         main_box.set_name('main-box')
 
-        home_view = HomeView()
-        snapcontrol_view = SnapControlView()
-
-        content_window = self.content_window()
-        content_window.add_titled(home_view.generate_view(), "home_view", "Home")
-        content_window.add_titled(snapcontrol_view, "snapcontrol_view", "Snapcast")
+        self.content_window = self.build_content_window()
+        self.content_window.add_titled(HomeView(), "home_view", "Home")
+        self.content_window.add_titled(SnapControlView(), "snapcontrol_view", "Snapcast")
+        self.content_window.add_titled(MycroftView(), "mycroft_view", "Mycroft")
 
         switcher = Gtk.StackSwitcher(can_focus=False)
         switcher.set_name("menu")
-        switcher.set_stack(content_window)
+        switcher.set_stack(self.content_window)
 
-        main_box.pack_start(content_window, True, True, 0)
+        main_box.pack_start(self.content_window, True, True, 0)
         main_box.pack_end(switcher, False, False, 0)
 
         self.load_css()
         self.add(main_box)
 
 
-    def content_window(self):
+    def build_content_window(self):
         content_box = Gtk.Stack()
 
         content_box.set_transition_type(Gtk.StackTransitionType.OVER_UP)

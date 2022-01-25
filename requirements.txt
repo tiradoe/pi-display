@@ -1,4 +1,5 @@
-snapcast
+mycroft-messagebus-client
 pycairo
 PyGObject
 python-dotenv
+snapcast
