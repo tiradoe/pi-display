@@ -4,26 +4,30 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 from mycroft_bus_client import MessageBusClient
 from time import sleep
+from .responses.text_response import MycroftTextResponse
 
 
 class MycroftView(Gtk.ScrolledWindow):
-    def __init__(self):
+    def __init__(self, parent):
         Gtk.ScrolledWindow.__init__(self, Gtk.Adjustment(0,0,0,0,0,0))
-        self.content_box = Gtk.Box()
-        self.content_box.set_name("mycroft-box")
         self.display_in_use = False
+        self.parent = parent
+        self.stack = Gtk.Stack()
+        self.stack.set_name("mycroft-stack")
 
-        self.build_default_view()
-        self.add(self.content_box)
+        self.default_message = {"text":"Say \"Hey, Mycroft\" to activate Mycroft" }
+        self.text_response = MycroftTextResponse(self.default_message)
+
+        self.build_stack()
+        self.add(self.stack)
 
         self.client = MessageBusClient()
         self.client.run_in_thread()
         self.client.on("speak", self.handle_utterance)
 
 
-    def build_default_view(self):
-        view = Gtk.Label("Say \"Hey, Mycroft\" to activate Mycroft")
-        self.content_box.pack_start(view, True, True, 1)
+    def build_stack(self):
+        self.stack.add_titled(self.text_response, "text_response", "Text")
 
 
     def handle_utterance(self, message):
@@ -32,58 +36,24 @@ class MycroftView(Gtk.ScrolledWindow):
         if self.display_in_use == True:
             return
 
-        skills = {
-            "QuestionsAnswersSkill": self.handle_questions_and_answers_skill,
-            "WeatherSkill": self.handle_questions_and_answers_skill,
-            "JokingSkill": self.handle_joking_skill,
-            "TimerSkill": self.handle_timer_skill,
-        }
-
-        if message.data["meta"]["skill"] in skills:
-            main_window = self.get_toplevel().content_window
-            if main_window.get_visible_child_name() != "mycroft_view":
-                main_window.set_visible_child_name("mycroft_view")
-
-            run_skill = skills[message.data["meta"]["skill"]]
-            run_skill(message)
-            self.reset_view()
+        self.handle_text_response(message)
+        self.reset_view()
 
 
-    def handle_joking_skill(self, message):
-        view = MycroftTextResponse(message)
-        self.update_view(view)
-
-
-    def handle_questions_and_answers_skill(self, message):
-        view = MycroftTextResponse(message)
-        self.update_view(view)
-
-
-    def handle_timer_skill(self, message):
-        view = MycroftTextResponse(message)
-        self.update_view(view)
+    def handle_text_response(self, message):
+        self.text_response.set_label(message)
+        self.update_view("text_response")
 
 
     def reset_view(self):
-        sleep(15)
         self.display_in_use = False
-        self.get_toplevel().content_window.set_visible_child_name("home_view")
+        self.text_response.set_label(self.default_message)
+        self.parent.emit("update_view", "home_view")
 
 
     def update_view(self, new_view):
         self.display_in_use = True
-        for child in self.content_box:
-            self.content_box.remove(child)
-
-        self.content_box.pack_start(new_view, True, True, 1)
-        self.content_box.show_all()
-
-
-class MycroftTextResponse(Gtk.Box):
-    def __init__(self, message):
-        Gtk.Box.__init__(self)
-        self.utterance_label = Gtk.Label(message.data["utterance"])
-        self.utterance_label.set_line_wrap(True)
-        self.utterance_label.set_max_width_chars(50)
-        self.pack_start(self.utterance_label, True, True, 1)
+        self.stack.set_visible_child_name(new_view)
+        self.parent.emit("update_view", "mycroft_view")
+        sleep(15)
 

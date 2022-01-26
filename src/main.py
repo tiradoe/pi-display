@@ -2,7 +2,7 @@
 import gi
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gdk
+from gi.repository import Gtk, Gdk, GObject
 
 from apps.home import HomeView
 from apps.snapcontrol import SnapControlView
@@ -10,9 +10,14 @@ from apps.mycroft import MycroftView
 from dotenv import dotenv_values
 
 class AppWindow(Gtk.Window):
+    __gsignals__ = {
+        'update_view': (GObject.SignalFlags.RUN_FIRST, None, (str,)),
+    }
+
     def __init__(self):
         super().__init__(title="RPi Display")
         self.config = dotenv_values(".env")
+        self.connect("update_view", self.on_update_view)
 
         if "ENVIRONMENT" in self.config and self.config["ENVIRONMENT"] == "dev":
             self.set_size_request(800,480)
@@ -27,7 +32,7 @@ class AppWindow(Gtk.Window):
         self.content_window = self.build_content_window()
         self.content_window.add_titled(HomeView(), "home_view", "Home")
         self.content_window.add_titled(SnapControlView(), "snapcontrol_view", "Snapcast")
-        self.content_window.add_titled(MycroftView(), "mycroft_view", "Mycroft")
+        self.content_window.add_titled(MycroftView(self), "mycroft_view", "Mycroft")
 
         switcher = Gtk.StackSwitcher(can_focus=False)
         switcher.set_name("menu")
@@ -47,6 +52,10 @@ class AppWindow(Gtk.Window):
         content_box.set_transition_duration(500)
 
         return content_box
+
+
+    def on_update_view(self, old_view, new_view):
+        self.content_window.set_visible_child_name(new_view)
 
 
     def load_css(self):
