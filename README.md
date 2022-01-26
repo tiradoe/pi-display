@@ -1,6 +1,6 @@
 # Pi Display
 
-A display designed for the official Raspberry Pi 7" touchscreen (should work on most screens though).  Includes integration with [Snapcast](https://github.com/badaix/snapcast) for controlling client sound and sources (more integrations coming soon!).
+A display designed for the official Raspberry Pi 7" touchscreen (should work on most screens though).  Includes integration with [Snapcast](https://github.com/badaix/snapcast) and [Mycroft AI](https://mycroft.ai/)
 
 ![Pi Display](https://i.imgur.com/77G2Cjb.gif)
 
