@@ -26,6 +26,8 @@ class SnapControlView(Gtk.ScrolledWindow):
                     self.config["SNAPCAST_TCP_PORT"])
                 )
         self.groups_container = Gtk.Box()
+        groups_container_context = self.groups_container.get_style_context()
+        groups_container_context.add_class("groups-container")
         self.groups_container.set_name("groups-container")
         self.groups = Gtk.FlowBox()
 
