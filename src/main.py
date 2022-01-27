@@ -7,6 +7,7 @@ from gi.repository import Gtk, Gdk, GObject
 from apps.home import HomeView
 from apps.snapcontrol import SnapControlView
 from apps.mycroft import MycroftView
+from apps.huecontrol import HueView
 from dotenv import dotenv_values
 
 class AppWindow(Gtk.Window):
@@ -32,6 +33,7 @@ class AppWindow(Gtk.Window):
         self.content_window = self.build_content_window()
         self.content_window.add_titled(HomeView(), "home_view", "Home")
         self.content_window.add_titled(SnapControlView(), "snapcontrol_view", "Snapcast")
+        self.content_window.add_titled(HueView(), "hue_view", "Lights")
         self.content_window.add_titled(MycroftView(self), "mycroft_view", "Mycroft")
 
         switcher = Gtk.StackSwitcher(can_focus=False)

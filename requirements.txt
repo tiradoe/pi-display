@@ -3,3 +3,4 @@ pycairo
 PyGObject
 python-dotenv
 snapcast
+phue

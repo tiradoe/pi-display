@@ -74,3 +74,8 @@
 #snapcontrol-grid {
     padding: 1em;
 }
+
+#hue-box {
+    background-color: #db5f11;
+    color: white;
+}
