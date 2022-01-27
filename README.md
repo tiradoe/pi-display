@@ -7,7 +7,7 @@ A display designed for the official Raspberry Pi 7" touchscreen (should work on 
 - [Philips Hue](https://www.philips-hue.com/)
 
 
-![Pi Display](https://i.imgur.com/77G2Cjb.gif)
+![Pi Display](https://imgur.com/Dh5HcLK.gif)
 
 ## Requirements
 - [Gtk 3](https://www.gtk.org)
