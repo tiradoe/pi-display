@@ -1,21 +1,52 @@
+#clock {
+    padding-top: 1.5em;
+    font-size: 1.5em;
+}
+
 #date-box {
     background-color: #514fe8;
     padding-top: 2em;
     font-size: 2.2em;
     color: #fff;
     font-weight: bold;
-    font-size: 2em;
 }
 
 #day-of-month-label {
     font-size: 2em;
 }
 
-#picture-box{
-    /*background-color: #4fd6e8;*/
+#groups-box {
+    background-color: #b3bcf2;
+    color: #fff;
+}
+
+#hue-content-box {
+    background-color: #db5f11;
+}
+
+#mycroft-content-box {
+    background-color: #0792ef;
+}
+
+#mycroft-stack {
+    color: white;
+    font-weight: bold;
+    font-size: 20pt;
+    padding: 2em;
+}
+
+#picture-box {
     background-image: url("assets/default_bg.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+#snapcast-content-box {
+    background-color: #b3bcf2;
+}
+
+.app-box {
+    padding: .5em;
 }
 
 .client-container {
@@ -26,9 +57,9 @@
     padding-bottom: 1em;
 }
 
-#clock {
-    padding-bottom: 1.5em;
-    font-size: 1.5em;
+.content-box {
+    color: white;
+    padding: 1em;
 }
 
 .group-box {
@@ -41,8 +72,24 @@
     background-color: #fff;
     padding: 1em;
     padding-bottom: 1em;
-    border-radius: 1em 1em 0 0 ;
+    border-radius: 1em 1em 0 0;
     font-weight: bold;
+}
+
+.header {
+    color: black;
+    font-size: 2em;
+}
+
+.home-button {
+    color: black;
+    background-image: none;
+    background-color: #d8d8d8;
+}
+
+.main-menu {
+    color: white;
+    background-color: #9abde2;
 }
 
 .separator {
@@ -58,25 +105,9 @@
     font-weight: bold;
 }
 
-#mycroft-stack {
-    background-color: #0792ef;
-    color: white;
-    font-weight: bold;
-    font-size: 20pt;
-    padding: 2em;
-}
-
-#groups-container {
-    background-color: #b3bcf2;
-    color: #fff;
-}
-
-#snapcontrol-grid {
+.title-box {
+    background-color: white;
+    border-radius: 1em;
     padding: 1em;
-}
-
-#hue-box {
-    background-color: #db5f11;
-    color: white;
-    padding: 1em;
+    margin-bottom: 1em;
 }
