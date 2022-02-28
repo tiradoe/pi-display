@@ -11,7 +11,7 @@ class AppMenu(Gtk.ScrolledWindow):
         self.parent = parent
         self.main_window = main_window
         self.apps = {
-            "Snapcast Control": "snapcast_view",
+            "Snapcast": "snapcast_view",
             "Lights": "hue_view",
             "Mycroft": "mycroft_view"
         }
@@ -29,9 +29,14 @@ class AppMenu(Gtk.ScrolledWindow):
         home_app_box.set_hexpand(True)
         home_app_box_context = home_app_box.get_style_context()
         home_app_box_context.add_class("app-box")
+
         home_app_button = Gtk.Button.new_with_label("Home")
+        home_app_button_context = home_app_button.get_style_context()
+        home_app_button_context.add_class("menu-button")
         home_app_button.connect('clicked', self.reset_home_view)
+
         home_app_box.pack_start(home_app_button, False, False, 0)
+
         app_grid.add(home_app_box)
 
         for name, app in self.apps.items():
@@ -40,6 +45,8 @@ class AppMenu(Gtk.ScrolledWindow):
             app_box_context.add_class("app-box")
 
             app_button = Gtk.Button.new_with_label(name)
+            app_button_context = app_button.get_style_context()
+            app_button_context.add_class("menu-button")
             app_button.connect('clicked', self.update_view, app)
 
             app_box.pack_start(app_button, False, False, 0)
