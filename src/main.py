@@ -38,12 +38,7 @@ class AppWindow(Gtk.Window):
         self.content_window.add_titled(HueView(self, build_header_bar), "hue_view", "Lights")
         self.content_window.add_titled(MycroftView(self, build_header_bar), "mycroft_view", "Mycroft")
 
-        switcher = Gtk.StackSwitcher(can_focus=False)
-        switcher.set_name("menu")
-        switcher.set_stack(self.content_window)
-
         main_box.pack_start(self.content_window, True, True, 0)
-        # main_box.pack_end(switcher, False, False, 0)
 
         self.load_css()
         self.add(main_box)

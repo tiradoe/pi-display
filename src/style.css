@@ -1,12 +1,12 @@
 #clock {
     padding-top: 1.5em;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 #date-box {
     background-color: #514fe8;
     padding-top: 2em;
-    font-size: 2.2em;
+    font-size: 2em;
     color: #fff;
     font-weight: bold;
 }
@@ -22,6 +22,13 @@
 
 #hue-content-box {
     background-color: #db5f11;
+}
+
+#menu-button {
+    background-color: #2390d3;
+    background-image: none;
+    border-radius: 0;
+    color: white;
 }
 
 #mycroft-content-box {
@@ -71,7 +78,6 @@
     color: black;
     background-color: #fff;
     padding: 1em;
-    padding-bottom: 1em;
     border-radius: 1em 1em 0 0;
     font-weight: bold;
 }
@@ -89,7 +95,15 @@
 
 .main-menu {
     color: white;
-    background-color: #9abde2;
+    background-color: #514fe8;
+}
+
+.menu-button {
+    background-color: #2390d3;
+    background-image: none;
+    color: white;
+    font-weight: bold;
+    padding: 1em;
 }
 
 .separator {

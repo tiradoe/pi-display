@@ -30,6 +30,7 @@ class HomeView(Gtk.Grid):
         date_box.set_vexpand(True)
 
         menu_button = Gtk.Button.new_with_label("Menu")
+        menu_button.set_name("menu-button")
         menu_button.connect("clicked", self.toggle_menu)
 
         date_box.pack_start(CalendarBox(), False, False, 2)
